@@ -1,0 +1,36 @@
+﻿#navBar {
+    border-radius: 50px !important;
+    background: #e0e0e0 !important;
+    box-shadow: -20px 20px 19px #bebebe, 20px -20px 19px #ffffff !important;
+    padding: 5px !important;
+    margin-top: 5px !important;
+}
+
+.nav-item:hover {
+    background-color: #ececec !important;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+ scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  k {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2E86C1;
+    border-radius: 6px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #2874A6;
+    }
