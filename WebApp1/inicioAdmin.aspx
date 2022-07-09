@@ -46,6 +46,8 @@
                         <td><a href="Mantenimiento/vistaAdmin.aspx?tusu=1"><image src="img/admin.png"></image><center><p>Administrador</p></center> </a></td>
                         <td><a href="Mantenimiento/vistaAdmin.aspx?tusu=2"><image src="img/post.png"></image><center><p>Posteador</p></center> </a></td>
                         <td><a href="Mantenimiento/vistaAdmin.aspx?tusu=3"><image src="img/analista.png"></image><center><p>Analista</p></center> </a></td>
+                        <td><a href="Login.aspx"><image src="img/cerrarsesion.png"></image><center><p>Salir del Programa</p></center> </a></td>
+
                     </tr>
                 </table>
 

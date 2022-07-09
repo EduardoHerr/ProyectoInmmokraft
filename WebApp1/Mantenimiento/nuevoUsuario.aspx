@@ -5,7 +5,7 @@
     <form class="row g-3">
         <center>
         <div class="col-md-12">
-            <asp:Label ID="lblMensaje" runat="server" Text="Hola" CssClass="Titulo" ></asp:Label>
+            <asp:Label ID="lblMensaje" runat="server" Text="Registro de Usuario" CssClass="Titulo" ></asp:Label>
         </div>
             </center>
         <div class="col-md-11">
@@ -36,10 +36,7 @@
             <label class="form-label">Direccion</label>
             <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
-        <div class="col-md-11">
-            <label class="form-label">Rol</label>
-            <asp:DropDownList ID="ddlRol" runat="server" CssClass="form-control" Height="35px"></asp:DropDownList>
-        </div>
+        
         <br />
         <div>
             <center>

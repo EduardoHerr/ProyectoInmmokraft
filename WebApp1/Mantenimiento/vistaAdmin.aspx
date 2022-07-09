@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
     <div>
-        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
+        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
     </div>
     <br />
     <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
@@ -41,6 +41,13 @@
         <asp:TemplateField HeaderText="Dirección">
             <ItemTemplate>
                 <asp:Label ID="lblDireccion" runat="server" Text='<%#Eval("usDireccion")%>'></asp:Label>        
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField HeaderText="Acciones">
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkEditar" CssClass="btn btn-outline-warning" runat="server" CommandArgument='<%#Eval("idUsuario")%>' CommandName="Editar">Editar</asp:LinkButton>
+                <asp:LinkButton ID="lnkEliminar" CssClass="btn btn-outline-danger" runat="server" CommandArgument='<%#Eval("idUsuario")%>' CommandName="Eliminar">Eliminar</asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
 

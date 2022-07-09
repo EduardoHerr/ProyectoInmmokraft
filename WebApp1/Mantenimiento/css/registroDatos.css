@@ -1,6 +1,6 @@
 ﻿.centrar {
     width: 650px;
-    height: 1200px;
+    height: 750px;
     margin: 10px auto;
     padding: 15px;
     background: rgba( 253, 251, 251, 0.25 );
@@ -21,9 +21,5 @@
     margin-top:5px;
 }
 
-.contorno {
-    border-style: dotted;
-    border-width: 1px;
-    border-color: black;
-    padding: 3px;
-}
+
+

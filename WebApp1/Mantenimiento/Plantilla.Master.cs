@@ -17,10 +17,10 @@ namespace WebApp1.Mantenimiento
                 cargarLinks();
                 if (Session["nombre"] != null)
                 {
-                    
-                        string nombre= Session["nombre"].ToString();
-                        lblNombre.Text = "Bienvenido, de nuevo " + nombre;
-                    
+
+                    string nombre = Session["nombre"].ToString();
+                    lblNombre.Text = "Bienvenido, de nuevo " + nombre;
+
                 }
                 else
                 {
@@ -30,7 +30,7 @@ namespace WebApp1.Mantenimiento
                 if (Session["rol"] != null)
                 {
                     int rol = Convert.ToInt32(Session["rol"]);
-                    if (rol != 1)
+                    if (rol == 2)
                     {
                         pnlAdmin.Visible = false;
                     }

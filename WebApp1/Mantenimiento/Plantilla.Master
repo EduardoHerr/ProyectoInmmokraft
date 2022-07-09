@@ -39,7 +39,7 @@
                                     <asp:Label ID="lblNombre" runat="server" Text="Hola, Bienvenido"></asp:Label></h4>
                             </div>
                             <div class="col">
-                                <asp:LinkButton CssClass="btn btn-danger" ID="lnkSalir" runat="server" OnClick="lnkSalir_Click">Salir</asp:LinkButton>                                
+                                <asp:LinkButton CssClass="btn btn-danger" ID="lnkSalir" runat="server" OnClick="lnkSalir_Click">Salir del Programa</asp:LinkButton>                                
                             </div>
                         </div>
                     </div>

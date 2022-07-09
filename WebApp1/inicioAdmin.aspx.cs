@@ -13,5 +13,10 @@ namespace WebApp1
         {
 
         }
+
+        private void salir()
+        {
+            Session["nombre"] = null;
+        }
     }
 }

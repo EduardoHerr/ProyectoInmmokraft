@@ -13,6 +13,7 @@ namespace WebApp1.Mantenimiento
     {
         logRol rol = new logRol();
         private tblUsuario us = new tblUsuario();
+        static int tusu;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,16 +34,20 @@ namespace WebApp1.Mantenimiento
                         txtCalve.Text = us.usClave.ToString();
                         txtCorreo.Text=us.usCorreo.ToString();
                         txtDireccion.Text = us.usDireccion.ToString();
-                        ddlRol.SelectedValue = us.idTipUsu.ToString();
+                        
                     }
 
                 }
                 else
                 {
+                    if (Request["tipo"]!=null)
+                    {
+                        tusu = Convert.ToInt32(Request["tipo"]);
+                    }
                     lnkGuardar.Visible = true;
                     lnkeditar.Visible = false;
                 }
-                cargarRol();
+                
             }
             
         }
@@ -50,36 +55,46 @@ namespace WebApp1.Mantenimiento
         void limpiar()
         {
             txtApellido.Text = txtCalve.Text = txtCedula.Text = txtCorreo.Text = txtDireccion.Text = txtNombre.Text = "";
-            ddlRol.SelectedIndex = 0;
+            
         }
 
         private void guardar()
         {
-            try
+            if (String.IsNullOrEmpty(txtApellido.Text) || String.IsNullOrEmpty(txtCalve.Text) || String.IsNullOrEmpty(txtCedula.Text) || String.IsNullOrEmpty(txtCorreo.Text) || String.IsNullOrEmpty(txtDireccion.Text) || String.IsNullOrEmpty(txtNombre.Text))
             {
-                lblMensaje.Text = "Registro de Usuarios";
-                us = new tblUsuario();
-
-                us.usNombre = txtNombre.Text;
-                us.usApellido = txtApellido.Text;
-                us.usCedula = txtCedula.Text;
-                us.usClave = txtCalve.Text;
-                us.usCorreo= txtCorreo.Text;
-                us.usDireccion = txtDireccion.Text;
-                us.idTipUsu = Convert.ToInt32(ddlRol.SelectedValue);
-
-                logUser.save(us);
-                lblMensaje.Text = "";
-                lblMensaje.Text = "Datos Guardados exitosamente";
-                limpiar();
+                lblMensaje.ForeColor = System.Drawing.Color.DarkRed;
+                lblMensaje.Text = "Falta llenar algun campo";
             }
-            catch (Exception)
+            else
             {
 
-                throw;
+
+                try
+                {
+
+                    lblMensaje.Text = "Registro de Usuarios";
+                    us = new tblUsuario();
+
+                    us.usNombre = txtNombre.Text;
+                    us.usApellido = txtApellido.Text;
+                    us.usCedula = txtCedula.Text;
+                    us.usClave = txtCalve.Text;
+                    us.usCorreo = txtCorreo.Text;
+                    us.usDireccion = txtDireccion.Text;
+                    us.idTipUsu = tusu;
+
+                    logUser.save(us);
+                    lblMensaje.Text = "";
+                    lblMensaje.Text = "Datos Guardados exitosamente";
+                    limpiar();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
-
         private void modify(tblUsuario use)
         {
             try
@@ -92,7 +107,7 @@ namespace WebApp1.Mantenimiento
                 use.usClave = txtCalve.Text;
                 use.usCorreo = txtCorreo.Text;
                 use.usDireccion = txtDireccion.Text;
-                use.idTipUsu = Convert.ToInt32(ddlRol.SelectedValue);
+                
                 
 
                 logUser.edit(use);
@@ -107,19 +122,7 @@ namespace WebApp1.Mantenimiento
             }
         }
 
-        private void cargarRol()
-        {
-            List<tblTipoUsuario> listrol = new List<tblTipoUsuario>();
-
-            listrol = logRol.obtenerRol();
-            listrol.Insert(0, new tblTipoUsuario() { tusuRol="Seleccione" });
-
-            ddlRol.DataSource = listrol;
-            ddlRol.DataTextField = "tusuRol";
-            ddlRol.DataValueField = "idTipUsu";
-
-            ddlRol.DataBind();
-        }
+        
         private void guardaroModificar(int key)
         {
             if (key==0)
@@ -148,7 +151,21 @@ namespace WebApp1.Mantenimiento
 
         protected void lnkRegresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Mantenimiento/PageUsuarios.aspx");
+            switch (tusu)
+            {
+                case 1:
+                    Response.Redirect("~/Mantenimiento/vistaAdmin.aspx?tusu=1");
+                    break;
+                case 2:
+                    Response.Redirect("~/Mantenimiento/vistaAdmin.aspx?tusu=2");
+                    break;
+                case 3:
+                    Response.Redirect("~/Mantenimiento/vistaAdmin.aspx?tusu=3");
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }

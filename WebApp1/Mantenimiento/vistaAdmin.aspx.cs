@@ -52,7 +52,32 @@ namespace WebApp1.Mantenimiento
 
         protected void grvCRUD_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int codigo = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "Editar")
+            {
+                Response.Redirect("~/Mantenimiento/nuevoUsuario.aspx?cod=" + codigo, true);
+                Context.ApplicationInstance.CompleteRequest();
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                tblUsuario user = new tblUsuario();
+                user = logUser.obtenerxID(codigo);
+                if (user != null)
+                {
+                    logUser.eliminarUser(user);
+                    cargarUsuarios();
+                }
+            }
 
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (Request["tusu"] != null)
+            {
+                int tusu = Convert.ToInt32(Request["tusu"].ToString());
+                Response.Redirect("~/Mantenimiento/nuevoUsuario.aspx?tipo="+tusu);
+            }
         }
     }
 }
